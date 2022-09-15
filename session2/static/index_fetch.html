@@ -26,6 +26,18 @@
 
     window.init = function() {
         const theView = view(window)
+        fetch('http://localhost:9090/persons')
+        .then(res => res.ok ? res : Promise.reject(res))
+        .then(res => res.json())
+        .then(persons => {
+            fetch('http://localhost:9090/employees')
+            .then(res => res.ok ? res : Promise.reject(res))
+            .then(res => res.json())
+            .then(employees => {
+                display(theView, persons, employees)
+            })
+        })
+        .catch(e => theView.displayError(e))
     }
 </script>
 </head>

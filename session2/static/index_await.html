@@ -26,6 +26,17 @@
 
         window.init = async function() {
             const theView = view(window)
+            try {
+                const res = await fetch('http://localhost:9090/persons')
+                if (!res.ok) throw new Exception(res.statusText)
+                const persons = await res.json()
+                const resE = await fetch('http://localhost:9090/employees')
+                if (!resE.ok) throw new Exception(res.statusText)
+                const employees = await resE.json()
+                display(theView, persons, employees)
+            } catch (e) {
+                theView.displayError(e)
+            }
         }
         init()
     </script>
