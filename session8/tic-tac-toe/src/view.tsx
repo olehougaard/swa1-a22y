@@ -51,8 +51,14 @@ const Lobby = () => {
 }
 
 const WaitingForGame = () => {
+<<<<<<< HEAD
   React.useEffect(() => {window.document.title = 'Waiting for other player...'})
 
+=======
+  React.useEffect(() => {
+    document.title = 'Waiting for other player...'
+  })
+>>>>>>> 52c90a820d4b852253c31ed8cdd80a41bc0ae262
   return <div>
     <h1>Waiting for other player...</h1>
   </div>
